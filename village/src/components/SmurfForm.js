@@ -18,6 +18,8 @@ class SmurfForm extends Component {
       age: '',
       height: '',
     });
+
+    if (this.props.destination) this.props.history.push(this.props.destination);
   }
 
   handleInputChange = e => {

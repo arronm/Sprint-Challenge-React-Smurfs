@@ -6,14 +6,15 @@ const Smurf = props => {
 
   const deleteSmurf = () => {
     props.deleteSmurf(props.id);
+    props.history.push('/');
   }
 
   const editSmurf = (smurf) => {
-    console.log('edit');
     props.editSmurf({
       ...smurf,
       id: props.id,
     });
+    props.history.push(`/smurf/${props.id}`);
   }
 
   return (

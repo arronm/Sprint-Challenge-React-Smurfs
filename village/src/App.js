@@ -71,7 +71,6 @@ class App extends Component {
   }
 
   handleEditSmurf = smurf => {
-    console.log('handle edit', smurf);
     axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
       .then(
         res => {
@@ -121,6 +120,7 @@ class App extends Component {
               {...props}
               refreshSmurfs={this.refreshSmurfs}
               handleOnSubmit={this.handleAddSmurf}
+              destination="/"
             />
           )}
         />
