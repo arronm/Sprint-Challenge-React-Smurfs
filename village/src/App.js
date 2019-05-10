@@ -57,6 +57,10 @@ class App extends Component {
       );
   }
 
+  handleEditSmurf = id => {
+    console.log("do the thing");
+  }
+
   render() {
     return (
       <div className="App">
@@ -75,6 +79,8 @@ class App extends Component {
             <Smurf
               {...routeProps}
               {...this.getSmurfById(routeProps.match.params.id)}
+              deleteSmurf={this.handleDeleteSmurf}
+              editSmurf={this.handleEditSmurf}
             />
           )}
         />

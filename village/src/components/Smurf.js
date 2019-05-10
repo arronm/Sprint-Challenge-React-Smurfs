@@ -6,14 +6,17 @@ const Smurf = props => {
     props.deleteSmurf(props.id);
   }
 
-  console.log(props);
+  const editSmurf = () => {
+    console.log('edit');
+  }
 
   return (
     <div className="Smurf">
       <h3>{props.name}</h3>
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
-      <input type="button" value="delete" onClick={deleteSmurf} />
+      { props.editSmurf && <input type="button" value="edit" onClick={editSmurf} /> }
+      { props.deleteSmurf && <input type="button" value="delete" onClick={deleteSmurf} /> }
     </div>
   );
 };
