@@ -16,10 +16,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getData();
-  }
-
-  getData = () => {
     axios.get('http://localhost:3333/smurfs')
       .then(
         res => {
@@ -34,15 +30,17 @@ class App extends Component {
       );
   }
 
+  refreshSmurfs = (smurfs) => {
+    this.setState({
+      smurfs: smurfs
+    });
+  }
+
   handleDeleteSmurf = id => {
-    console.log(`Smurf'd that smurf: ${id}`);
     axios.delete(`http://localhost:3333/smurfs/${id}`)
       .then(
         res => {
-          console.log(res.data);
-          this.setState({
-            smurfs: res.data,
-          });
+          this.refreshSmurfs(res.data)
         }
       )
       .catch(
@@ -66,7 +64,7 @@ class App extends Component {
         />
         <Route
           path="/smurf-form"
-          render={(props) => <SmurfForm {...props} getData={this.getData} />}
+          render={(props) => <SmurfForm {...props} refreshSmurfs={this.refreshSmurfs} />}
         />
       </div>
     );

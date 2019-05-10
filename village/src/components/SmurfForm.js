@@ -16,7 +16,7 @@ class SmurfForm extends Component {
     axios.post('http://localhost:3333/smurfs', {...this.state})
       .then(
         res => {
-          this.props.getData();
+          this.props.refreshSmurfs(res.data);
         }
       )
       .catch(
