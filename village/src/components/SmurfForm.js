@@ -13,8 +13,6 @@ class SmurfForm extends Component {
 
   addSmurf = event => {
     event.preventDefault();
-    // add code to create the smurf using the api
-
     axios.post('http://localhost:3333/smurfs', {...this.state})
       .then(
         res => {
@@ -40,6 +38,7 @@ class SmurfForm extends Component {
   };
 
   render() {
+    // This form is already completed?
     return (
       <div className="SmurfForm">
         <form onSubmit={this.addSmurf}>
