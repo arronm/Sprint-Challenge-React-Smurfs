@@ -1,4 +1,6 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom'
+import EditSmurf from './EditSmurf';
 
 const Smurf = props => {
 
@@ -6,8 +8,12 @@ const Smurf = props => {
     props.deleteSmurf(props.id);
   }
 
-  const editSmurf = () => {
+  const editSmurf = (smurf) => {
     console.log('edit');
+    props.editSmurf({
+      ...smurf,
+      id: props.id,
+    });
   }
 
   return (
@@ -15,8 +21,21 @@ const Smurf = props => {
       <h3>{props.name}</h3>
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
-      { props.editSmurf && <input type="button" value="edit" onClick={editSmurf} /> }
+      { props.editSmurf && <Link to={`/smurf/${props.id}/edit`}>Edit</Link> }
       { props.deleteSmurf && <input type="button" value="delete" onClick={deleteSmurf} /> }
+
+      <Route
+        path={`/smurf/${props.id}/edit`}
+        render={
+          (routerProps) => (
+            <EditSmurf
+              {...routerProps}
+              refreshSmurfs={this.refreshSmurfs}
+              handleOnSubmit={editSmurf}
+            />
+          )
+        }
+      />
     </div>
   );
 };

@@ -57,8 +57,19 @@ class App extends Component {
       );
   }
 
-  handleEditSmurf = id => {
-    console.log("do the thing");
+  handleEditSmurf = smurf => {
+    console.log('handle edit', smurf);
+    axios.put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+      .then(
+        res => {
+          this.refreshSmurfs(res.data);
+        }
+      )
+      .catch(
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   render() {
