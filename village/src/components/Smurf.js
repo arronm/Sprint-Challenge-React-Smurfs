@@ -6,6 +6,8 @@ const Smurf = props => {
     props.deleteSmurf(props.id);
   }
 
+  console.log(props);
+
   return (
     <div className="Smurf">
       <h3>{props.name}</h3>
