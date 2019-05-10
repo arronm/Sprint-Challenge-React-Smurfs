@@ -17,6 +17,10 @@ class App extends Component {
   // You'll need to make sure you have the right properties on state and pass them down to props.
 
   componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
     axios.get('http://localhost:3333/smurfs')
       .then(
         res => {
@@ -34,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm />
+        <SmurfForm getData={this.getData} />
         <Smurfs smurfs={this.state.smurfs} />
       </div>
     );
