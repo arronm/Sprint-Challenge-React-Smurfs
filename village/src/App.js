@@ -110,6 +110,7 @@ class App extends Component {
               {...this.getSmurfById(routeProps.match.params.id)}
               deleteSmurf={this.handleDeleteSmurf}
               editSmurf={this.handleEditSmurf}
+              refreshSmurfs={this.refreshSmurfs}
             />
           )}
         />

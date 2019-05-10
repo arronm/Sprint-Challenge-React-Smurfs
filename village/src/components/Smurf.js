@@ -31,7 +31,7 @@ const Smurf = props => {
           (routerProps) => (
             <SmurfForm
               {...routerProps}
-              refreshSmurfs={this.refreshSmurfs}
+              refreshSmurfs={props.refreshSmurfs}
               handleOnSubmit={editSmurf}
             />
           )
