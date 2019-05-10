@@ -16,7 +16,6 @@ class SmurfForm extends Component {
     axios.post('http://localhost:3333/smurfs', {...this.state})
       .then(
         res => {
-          console.log(res.data);
           this.props.getData();
         }
       )
@@ -38,7 +37,6 @@ class SmurfForm extends Component {
   };
 
   render() {
-    // This form is already completed?
     return (
       <div className="SmurfForm">
         <form onSubmit={this.addSmurf}>
