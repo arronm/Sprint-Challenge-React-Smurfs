@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
-import EditSmurf from './EditSmurf';
+import SmurfForm from './SmurfForm';
 
 const Smurf = props => {
 
@@ -28,7 +28,7 @@ const Smurf = props => {
         path={`/smurf/${props.id}/edit`}
         render={
           (routerProps) => (
-            <EditSmurf
+            <SmurfForm
               {...routerProps}
               refreshSmurfs={this.refreshSmurfs}
               handleOnSubmit={editSmurf}

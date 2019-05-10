@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, NavLink } from 'react-router-dom';
 
-
 import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
@@ -41,6 +40,20 @@ class App extends Component {
     return this.state.smurfs.filter(smurf => {
       return smurf.id === parseInt(id, 10)
     })[0];
+  }
+
+  handleAddSmurf = smurf => {
+    axios.post('http://localhost:3333/smurfs', smurf)
+    .then(
+      res => {
+        this.refreshSmurfs(res.data);
+      }
+    )
+    .catch(
+      error => {
+        console.log(`This request done smurf'd up: ${error}`);
+      }
+    );
   }
 
   handleDeleteSmurf = id => {
@@ -82,7 +95,13 @@ class App extends Component {
         <Route
           path="/"
           exact
-          render={(props) => <Smurfs {...props} smurfs={this.state.smurfs} deleteSmurf={this.handleDeleteSmurf} />}
+          render={(props) => (
+            <Smurfs
+              {...props}
+              smurfs={this.state.smurfs}
+              deleteSmurf={this.handleDeleteSmurf}
+            />
+          )}
         />
         <Route
           path="/smurf/:id"
@@ -97,7 +116,13 @@ class App extends Component {
         />
         <Route
           path="/smurf-form"
-          render={(props) => <SmurfForm {...props} refreshSmurfs={this.refreshSmurfs} />}
+          render={(props) => (
+            <SmurfForm
+              {...props}
+              refreshSmurfs={this.refreshSmurfs}
+              handleOnSubmit={this.handleAddSmurf}
+            />
+          )}
         />
       </div>
     );
